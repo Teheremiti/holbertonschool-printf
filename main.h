@@ -8,7 +8,7 @@
 typedef struct print_format
 {
 	char type;
-	void (*f)(va_list);
+	int (*f)(va_list);
 } print_t;
 
 int print_char(va_list);
