@@ -20,6 +20,10 @@ int print_char(va_list ap)
 int print_string(va_list ap)
 {
 	char *s = va_arg(ap, char *);
+	char *null = "(null)";
+
+	if (s == NULL)
+		return (write(1, null, strlen(null)));
 
 	return (write(1, s, strlen(s)));
 }
