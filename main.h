@@ -5,6 +5,12 @@
 #include <stdarg.h>
 #include <string.h>
 
+/**
+ * struct print_format -  structure used to print a correct format
+ * @type: type of format
+ * @f: printing function to call
+ *
+ */
 typedef struct print_format
 {
 	char type;
