@@ -8,7 +8,6 @@
 int print_char(va_list ap)
 {
 	int c = va_arg(ap, int);
-	char *null = "(null)";
 
 	return (write(1, &c, 1));
 }
