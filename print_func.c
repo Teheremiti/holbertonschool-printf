@@ -31,7 +31,8 @@ int print_string(va_list ap)
  */
 int print_percent(va_list ap)
 {
-	char c = '%%';
+	char c = '%';
+	(void) ap;
 
 	return (write(1, &c, 1));
 }
