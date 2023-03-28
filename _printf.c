@@ -18,34 +18,35 @@ int _printf(const char *format, ...)
 	};
 	int i, j;
 	int count = 0;
-
 	va_list ap;
 
 	va_start(ap, format);
+	if (format == NULL)
+		return (-1);
 
-	i = 0;
-	while (format != NULL && format[i] != '\0')
+	for (i = 0; format[i] != '\0'; i++)
 	{
-		if (format[i] != '%')
+		if (format[i] == '%')
+		{
+			for (j = 0; spec[j].type != '\0'; j++)
+			{
+				if (format[i + 1] == spec[j].type)
+				{
+					count += spec[j].f(ap);
+					i++;
+					break;
+				}
+				if (spec[j + 1].type == '\0')
+					count += spec[j].f(ap);
+			}
+		}
+		else
 		{
 			char chr = format[i];
 
 			count += write(1, &chr, 1);
 		}
-
-		j = 0;
-		while (spec[j].type != '\0')
-		{
-			if (format[i] == '%' && format[i + 1] == spec[j].type)
-			{
-				count += spec[j].f(ap);
-				i++;
-			}
-			j++;
-		}
-		i++;
 	}
-
 	va_end(ap);
 	return (count);
 }
