@@ -1,0 +1,71 @@
+NAME
+
+_printf - formats and prints data
+
+SYNOPSIS
+
+#include "main.h"
+
+int _printf(const char *format, ...);
+
+FILES
+
+main.h
+_printf.c
+print_func.c
+
+DESCRIPTION
+
+The _printf function produces output according to a format as described below.It is called by a variable number of arguments and writes output to stdout the standard output stream.
+
+The format string controls the output and specifies how subsequent arguments are converted for it.
+
+
+Format of the FORMAT string
+
+The format string is a character string, beginning and ending with double quotes " ".
+
+The format string is composed of zero or more directives: ordinary characters (not %), which are copied unchanged to the output stream; and conversion specifications, each of which results in fetching zero or more subsequent arguments.
+
+
+Each conversion specification is introduced by the character %, and ends with a conversionspecifier. In between there may be (in this order) zero or more flags, an optional minimum field width, an optional precision and an optional length modifier.
+
+
+Interpreted sequences are:
+
+%% A '%' is written. No argument is converted. The complete conversion specification is '%%'.
+
+%c a single character (char) is written
+
+%s a
+
+%d
+
+%i
+
+///une description de la fonction, les conversion specifiers disponibles, flags, field
+
+///width, precision, length modifier (mettez juste les symboles et les modifiers que vous avez faits
+
+
+The overall syntax of a conversion specification is:
+
+%[$][flags][width][.precision][length modifier]conversion
+
+
+The arguments must correspond properly (after type promotion) with the conversion specifier. By default, the arguments are usedin the order given, where each '*' (see Field width and Precision below) and each conversion specifier asks for the next argument (and it is an error if insufficiently many arguments are given).
+
+
+RETURN VALUES
+
+Upon successful return, these functions return the number of characters printed (excluding the null byte used to end output to strings).
+
+EXEMPLES
+
+////Au moins un pour chaque format specifier
+
+AUTHORS
+
+Written by Teheremiti Tuiaiho and Vladimir Davidov
+
+March 2023
