@@ -86,6 +86,7 @@ int print_int(va_list ap)
 	char zero;
 	int num = va_arg(ap, int);
 	int numCopy = num;
+	int modulus;
 	char *strNum = NULL;
 
 	if (num == 0)
@@ -94,31 +95,28 @@ int print_int(va_list ap)
 		return (write(1, &zero, 1));
 	}
 
-	while (numCopy != 0)
-	{
+	for (; numCopy != 0; numCopy /= 10)
 		len++;
-		numCopy = numCopy / 10;
-	}
 
 	if (num > 0)
-		strNum = malloc(sizeof(strNum) * len + 1);
+		strNum = malloc(len + 1);
 	else if (num < 0)
-		strNum = malloc(sizeof(strNum) * len + 2);
+		strNum = malloc(len + 2);
 
 	if (strNum == NULL)
-    		return (-2);
+		return (-2);
 
 	if (num < 0)
-	{
-		num = -1 * num;
 		strNum[len] = '-';
-	}
 
-	while (num != 0)
+	for (; num != 0; num /= 10)
 	{
-		strNum[i] = num % 10 + '0';
+		modulus = num % 10;
+		if (modulus < 0)
+			modulus = -1 * modulus;
+
+		strNum[i] = modulus + '0';
 		i++;
-		num = num / 10;
 	}
 
 	rev_string(strNum);
