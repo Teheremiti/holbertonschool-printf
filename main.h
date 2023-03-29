@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <stdarg.h>
 #include <string.h>
+#include <stdlib.h>
 
 /**
  * struct print_format -  structure used to print a correct format
@@ -20,6 +21,8 @@ typedef struct print_format
 int print_char(va_list);
 int print_string(va_list);
 int print_percent(va_list);
+int print_int(va_list);
+void rev_string(char *s);
 int _printf(const char *format, ...);
 
 #endif
