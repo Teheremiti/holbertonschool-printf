@@ -105,6 +105,9 @@ int print_int(va_list ap)
 	else if (num < 0)
 		strNum = malloc(sizeof(strNum) * len + 2);
 
+	if (strNum == NULL)
+    		return (-2);
+
 	if (num < 0)
 	{
 		num = -1 * num;
