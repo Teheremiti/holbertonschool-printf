@@ -13,8 +13,9 @@ int _printf(const char *format, ...)
 	print_t spec[] = {
 		{'c', print_char},
 		{'s', print_string},
-		{'%', print_percent},
 		{'d', print_int},
+		{'i', print_int},
+		{'%', print_percent},
 		{'\0', NULL}
 	};
 	int i, j;
