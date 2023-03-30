@@ -117,3 +117,7 @@ The format string controls the output and specifies how subsequent arguments are
 
 ## Flowchart
 ![Flowchart](https://github.com/Teheremiti/holbertonschool-printf/blob/master/_printf_flowchart.png)
+
+## AUTHORS
+
+Written by **Teheremiti Tuiaiho** and **Vladimir Davidov**
