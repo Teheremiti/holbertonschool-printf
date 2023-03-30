@@ -5,6 +5,7 @@
 #include <stdarg.h>
 #include <string.h>
 #include <stdlib.h>
+#include <math.h>
 
 /**
  * struct print_format -  structure used to print a correct format
@@ -22,7 +23,8 @@ int print_char(va_list);
 int print_string(va_list);
 int print_percent(va_list);
 int print_int(va_list);
-void rev_string(char *s);
+int _pow(int, int);
 int _printf(const char *format, ...);
+
 
 #endif

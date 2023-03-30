@@ -45,32 +45,29 @@ int print_percent(va_list ap)
 }
 
 /**
- * rev_string - reverses a string
- * @s: string to reverse
+ * _pow - functino that computes the value of x to the power of y
+ * @x: integer to raise to the power
+ * @y: integer used for the power
  *
- * Return: nothing
+ * Return: the value of x to the power of y
  */
-void rev_string(char *s)
+int _pow(int x, int y)
 {
-	int i = 0, len = strlen(s), tmp;
+	int tmp;
 
-	if (len % 2)
-	{
-		for (; i <= len / 2; i++)
-		{
-			tmp = s[i];
-			s[i] = s[len - 1 - i];
-			s[len - 1 - i] = tmp;
-		}
-	}
+	if (y == 0)
+		return (1);
+
+	tmp = _pow(x, y / 2);
+	if ((y % 2) == 0)
+		return (tmp * tmp);
+
 	else
 	{
-		for (; i <= len / 2 - 1; i++)
-		{
-			tmp = s[i];
-			s[i] = s[len - 1 - i];
-			s[len - 1 - i] = tmp;
-		}
+		if (y > 0)
+			return (x * tmp * tmp);
+
+		return ((tmp * tmp) / x);
 	}
 }
 
@@ -82,12 +79,11 @@ void rev_string(char *s)
  */
 int print_int(va_list ap)
 {
+	int num = va_arg(ap, int);
 	int len = 0, i = 0;
 	char zero;
-	int num = va_arg(ap, int);
 	int numCopy = num;
-	int modulus;
-	char *strNum = NULL;
+	int count = 0, digit, lenCopy;
 
 	if (num == 0)
 	{
@@ -95,32 +91,26 @@ int print_int(va_list ap)
 		return (write(1, &zero, 1));
 	}
 
-	for (; numCopy != 0; numCopy /= 10)
-		len++;
-
-	if (num > 0)
-		strNum = malloc(len + 1);
-	else if (num < 0)
-		strNum = malloc(len + 2);
-
-	if (strNum == NULL)
-		return (-2);
+	for (; numCopy != 0; len++)
+		numCopy = numCopy / 10;
 
 	if (num < 0)
-		strNum[len] = '-';
+		count += write(1, "-", 1);
 
-	for (; num != 0; num /= 10)
+	lenCopy = len - 1;
+	for (; i < len; i++, lenCopy--)
 	{
-		modulus = num % 10;
-		if (modulus < 0)
-			modulus = -1 * modulus;
+		digit = (num / _pow(10, lenCopy)) % 10;
 
-		strNum[i] = modulus + '0';
-		i++;
+		if (digit < 0)
+			digit = -1 * digit;
+
+		digit += '0';
+
+		count += write(1, &digit, 1);
 	}
 
-	rev_string(strNum);
-	return (write(1, strNum, strlen(strNum)));
+	return (count);
 }
 
 
