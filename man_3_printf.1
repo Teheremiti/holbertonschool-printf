@@ -1,75 +1,80 @@
-.TH "_printf" "1" "March 2023" "Holberton School Project"
-
+.TH "_printf" "1" "30 March 2023" "Holberton School Project"
 .SH NAME
-
-_printf - formats and prints data
-
+_printf \- formats and prints data
 .SH SYNOPSIS
-
 .B #include "main.h"
-
+.br
 .B int _printf(const char *format, ...);
-
 .SH FILES
-
 main.h
+.br
 _printf.c
+.br
 print_func.c
-
 .SH DESCRIPTION
+The _printf() function produces output according to a format as described below. It is called by a variable number of arguments and writes output to stdout, the standard output stream. The format string controls the output and specifies how subsequent arguments are converted for it.
 
-The _printf function produces output according to a format as described below.It is called by a variable number of arguments and writes output to stdout the standard output stream.
+.PP
+.B Format of the FORMAT string:
+.PP
+The format string is a character string, beginning and ending with double quotes " ". The format string is composed of zero or more directives: ordinary characters (not %), which are copied unchanged to the output stream; and conversion specifications, each of which results in fetching zero or more subsequent arguments. Each conversion specification is introduced by the character %, and ends with a conversion specifier.
 
-The format string controls the output and specifies how subsequent arguments are converted for it.
+.PP
+The overall syntax of a conversion specification is:
 
+.B %[conversion specifier]
 
-.B Format of the FORMAT string
+The arguments must correspond properly (after type promotion) with the conversion specifier. By default, the arguments are used in the order given where each conversion specifier asks for the next argument (and it is an error if insufficiently many arguments are given).
 
-The format string is a character string, beginning and ending with double quotes " ".
-
-The format string is composed of zero or more directives: ordinary characters (not %), which are copied unchanged to the output stream; and conversion specifications, each of which results in fetching zero or more subsequent arguments.
-
-
-Each conversion specification is introduced by the character %, and ends with a conversionspecifier. In between there may be (in this order) zero or more flags, an optional minimum field width, an optional precision and an optional length modifier.
-
-
+.PP
 .B Interpreted sequences are:
+.PP A character that specifies the type of conversion to be applied. The conversion specifiers and their meanings are:
 
-%% A '%' is written. No argument is converted. The complete conversion specification is '%%'.
+%%	a '%' character is written. No argument is converted. The complete conversion specification is '%%'.
 
-%c a single character (char) is written
+%c	a single character (char) is written.
 
-%s a
+%s	the const char * argument is expected to be a pointer to an array of character type(pointer to a string).  Characters from the array are written up to (but not including) a terminating null byte('\\0');
 
-%d
+%d	decimal base 10 number is written.
 
-%i
+%i	decimal base 10 number is written.
 
-///une description de la fonction, les conversion specifiers disponibles, flags, field
+.PP
+.B Naturally special characters:
+.PP
+To print following special characters \\, “, ‘, % C language and so _printf function use backslash \\ as an escape character to change the meaning of the next character after it. Without a backslash, special characters have a natural special meaning and they print as they appear.
 
-///width, precision, length modifier (mettez juste les symboles et les modifiers que vous avez faits
-
-
-.B The overall syntax of a conversion specification is:
-
-%[$][flags][width][.precision][length modifier]conversion
-
-
-The arguments must correspond properly (after type promotion) with the conversion specifier. By default, the arguments are usedin the order given, where each '*' (see Field width and Precision below) and each conversion specifier asks for the next argument (and it is an error if insufficiently many arguments are given).
-
+.PP
+. B Alternately special characters:
+.PP
+They normally print as you would expect, but when you add a backslash, it invokes their alternate meaning and they become special. Here is the partial list of these characters: \\a audible alert, \\f form feed, \\n newline (linefeed), \\r carriage return, \\t tab, \\v vertical tab.
 
 .SH RETURN VALUES
+Upon successful return, _printf function returns the number of characters printed (excluding the null byte used to end output to strings).
 
-Upon successful return, these functions return the number of characters printed (excluding the null byte used to end output to strings).
+If the format string is empty, or a single ‘%’ character is passed to the _printf function, the functions terminates and returns -1 value.
 
-.SH EXEMPLES
+If memory allocation with malloc() fails when an integer is passed to a function, the function terminates and returns -2 value.
 
-////Au moins un pour chaque format specifier
+.SH EXAMPLES
+If the format string is composed only of characters, each of them is printed exactly as it appears. _printf(“Hello World”); will output “Hello World”.
+
+For printing special characters a use of the backslash espace character is needed as follows. _printf(“\\\\, \\", \\’, \\%"); will output “\\, “, ‘,’%”.
+
+To print a ‘%’ character one can use ‘\\%’ or ‘%%’ notation. _printf(“\\% and %%”); will output “% and %”.
+
+If the %c specifier is used _printf(“A character: %c”, ‘H’); will output “A character: H”.
+
+If the %s specifier is used _printf(“A string: %s”, “Hello World”); will output “A string: Hello World”;
+
+If the %d or %i specifiers are used _printf(“A first integer is %d, the second integer is %i”, 10, 20); will output “A first integer is 10, the second integer is 20”.
 
 .SH AUTHORS
+Written by Teheremiti Tuiaiho and Vladimir Davidov
 
-Written by
-.B Teheremiti Tuiaiho
-and
-.B Vladimir Davidov
+.SH REPORTING BUGS
+Report any bugs to vladimir.davidov.pro@gmail.com and teheremiti.tuiaiho@holbertonstudents.com
 
+.SH COPYRIGHT
+This is a free software, you are free to change and redistribute it.
