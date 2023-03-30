@@ -115,6 +115,26 @@ The format string controls the output and specifies how subsequent arguments are
 	Unknown:[%r]
 	root@id:/holbertonschool-printf#
 
+## Valgrind
+
+    root@id:/holbertonschool-printf# valgrind ./_printf
+    ==19647== Memcheck, a memory error detector
+    ==19647== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+    ==19647== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+    ==19647== Command: ./_printf
+    ==19647==
+    [...]
+    ==19647==
+    ==19647== HEAP SUMMARY:
+    ==19647== in use at exit: 0 bytes in 0 blocks
+    ==19647== total heap usage: 1 allocs, 1 frees, 1,024 bytes allocated
+    ==19647==
+    ==19647== All heap blocks were freed -- no leaks are possible
+    ==19647==
+    ==19647== For lists of detected and suppressed errors, rerun with: -s
+    ==19647== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+    root@0241fe6ce683:/holbertonschool-printf#
+
 ## Flowchart
 ![Flowchart](https://github.com/Teheremiti/holbertonschool-printf/blob/master/_printf_flowchart.png)
 
