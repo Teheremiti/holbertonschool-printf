@@ -5,29 +5,34 @@
 First group project at Holberton School : implement our own simplified version of the **printf** function in C.
 
 **Name:** 
+
 _printf - Formats and prints data
 
 **Synopsis**
-#include "main.h"
-int _printf(const char * format, ...);
+
+- #include "main.h"
+- int _printf(const char * format, ...);
 
 **Files**
-main.h - Header file with all the prototypes and a structure 
-print_func.c - Contains functions that print for each type of data
-_printf.c
+
+- main.h - Header file with all the prototypes and a structure 
+- print_func.c - Contains functions that print for each type of data
+- _printf.c
 
 **Description**
+
 The _printf function produces output according to a format and returns the total number of characters printed. It is called by a variable number of arguments and writes output to stdout, the standard output stream.
 The format string controls the output and specifies how subsequent arguments are converted for it.
 
 
 ### man _printf
-[_printf man page](https://github.com/Teheremiti/holbertonschool-printf/blob/master/man_3_printf)
 
-[_printf man page](https://github.com/Teheremiti/holbertonschool-printf/blob/master/man_3_printf.1) (roff mark up language)
+- [_printf man page](https://github.com/Teheremiti/holbertonschool-printf/blob/master/man_3_printf)
+- [_printf man page](https://github.com/Teheremiti/holbertonschool-printf/blob/master/man_3_printf.1) (roff mark up language)
 
 
 ## Requirements
+
 -   All the files will be compiled on Ubuntu 20.04 LTS using  
 `gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -Wno-format *.c`
 - The code should respect the [Betty](https://github.com/holbertonschool/Betty/wiki) coding style : a linter specific to Holberton School
